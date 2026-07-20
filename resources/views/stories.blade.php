@@ -18,11 +18,13 @@
     ============================================================= --}}
     <div class="relative h-[420px] sm:h-[480px] overflow-hidden">
         {{-- 2-4 images : AUTO SLIDE SHOW --}}
-        <img
+        <div id="slideshow">
+            <img
             src="https://plus.unsplash.com/premium_photo-1765828956888-b9b59acae029?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3DD"
             alt="GKR Consulting business card mockups"
             class="absolute inset-0 h-full w-full object-cover"
-        >
+            >
+        </div>
 
         {{-- gradient overlay for text legibility --}}
         <div class="absolute inset-0 bg-gradient-to-t from-flame/40 via-slate-900/30 to-slate-900/10"></div>
