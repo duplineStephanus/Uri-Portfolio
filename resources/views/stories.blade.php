@@ -27,10 +27,10 @@
         </div>
 
         {{-- gradient overlay for text legibility --}}
-        <div class="absolute inset-0 bg-gradient-to-t from-flame/40 via-slate-900/30 to-slate-900/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-slate-900/10"></div>
 
         <div class="absolute inset-x-0 bottom-4 px-6">
-            <span class="text-xs font-semibold tracking-widest text-orange-400 uppercase">
+            <span class="text-xs font-semibold tracking-widest text-flame uppercase">
                 Featured Story
             </span>
             <div class="mt-2 text-white leading-tight">
@@ -49,10 +49,19 @@
     ============================================================= --}}
     <div class="bg-flame">
         <div class="flex items-center justify-between gap-8 overflow-x-auto px-6 py-4 no-scrollbar">
-            @foreach (['GKR', 'GKR Consulting', 'GKR', 'GKR Consulting', 'GKR', 'GKR Consulting', 'GKR', 'GKR Consulting', 'GKR', 'GKR Consulting', 'GKR', 'GKR Consulting', 'GKR'] as $logo)
-                <span class="shrink-0 text-xs font-semibold tracking-wide text-slate-300 uppercase">
-                    {{ $logo }}
-                </span>
+            @php
+                $logos = [
+                    'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/blackGrayLogo.png',
+                    'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/blackGrayTypeLogo.png',
+                    'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/primaryLogo.png',
+                    'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/aquaTypeLogo.png'
+                ]
+            @endphp
+            @foreach ($logos as $logo)
+                <img
+                src="{{ $logo }}"
+                class="h-10 w-auto object-contain"
+            >
             @endforeach
         </div>
     </div>
@@ -136,7 +145,7 @@
              BRAND DELIVERABLES CARD
         ============================================================= --}}
         <div class="rounded-3xl bg-slate-50 px-6 py-10 text-center">
-            <span class="text-xs font-semibold tracking-widest text-orange-500 uppercase">
+            <span class="text-xs font-semibold tracking-widest text-flame uppercase">
                 What We Deliver
             </span>
             <h2 class="mt-2 text-2xl font-bold text-slate-900">
@@ -192,8 +201,8 @@
 
                 @foreach ($deliverables as $item)
                     <div class="flex flex-col gap-3">
-                        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-100">
-                            <svg class="h-5 w-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-flame/10">
+                            <svg class="h-5 w-5 text-flame" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
                                 @switch($item['icon'])
                                     @case('target')
                                         <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round" />
