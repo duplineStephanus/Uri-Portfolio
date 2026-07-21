@@ -17,14 +17,22 @@
          HERO / FEATURED STORY 
     ============================================================= --}}
     <div class="relative h-[420px] sm:h-[480px] overflow-hidden">
+   
         {{-- 2-4 images : AUTO SLIDE SHOW --}}
-        <div id="slideshow">
+        <div id="slideshow" class="relative h-full w-full">
             <img
-            src="https://plus.unsplash.com/premium_photo-1765828956888-b9b59acae029?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3DD"
-            alt="GKR Consulting business card mockups"
-            class="absolute inset-0 h-full w-full object-cover"
+                src="https://plus.unsplash.com/premium_photo-1765828956888-b9b59acae029?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3DD"
+                alt="GKR Consulting slide1"
+                class="absolute inset-0 h-full w-full object-cover animate-slide"
+            >
+            <img 
+                src="https://plus.unsplash.com/premium_photo-1763898811222-c325622cfa89?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                alt="GKR Consulting slide2"
+                class="absolute inset-0 h-full w-full object-cover animate-slide"
+                style="animation-delay: 5s"
             >
         </div>
+
 
         {{-- gradient overlay for text legibility --}}
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-slate-900/10"></div>
@@ -47,21 +55,26 @@
     {{-- ============================================================
         LOGO STRIP
     ============================================================= --}}
-    <div class="bg-flame">
-        <div class="flex items-center justify-between gap-8 overflow-x-auto px-6 py-4 no-scrollbar">
-            @php
-                $logos = [
-                    'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/blackGrayLogo.png',
-                    'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/blackGrayTypeLogo.png',
-                    'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/primaryLogo.png',
-                    'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/aquaTypeLogo.png'
-                ]
-            @endphp
-            @foreach ($logos as $logo)
+
+    @php
+        $logos = [
+            'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/blackGrayLogo.png',
+            'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/blackGrayTypeLogo.png',
+            'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/primaryLogo.png',
+            'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/aquaTypeLogo.png'
+        ];
+
+        $marqueLogos = array_merge(...array_fill(0, 10, $logos));
+    @endphp
+
+    <div class="bg-flame overflow-hidden py-3 flex">
+        <div class="flex gap-20 animate-marquee">
+            @foreach ($marqueLogos as $logo)
                 <img
-                src="{{ $logo }}"
-                class="h-10 w-auto object-contain"
-            >
+                    src="{{ $logo }}"
+                    alt="GKR Consulting logo variations"
+                    class="h-10 w-auto object-contain"
+                >
             @endforeach
         </div>
     </div>

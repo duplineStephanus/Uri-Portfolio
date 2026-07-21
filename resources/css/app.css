@@ -35,6 +35,13 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
+    --animate-marquee : marquee 90s linear infinite;
+
+    @keyframes marquee {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(calc(-50% - 40px)); }
+    }
 }
 
 @layer theme {
@@ -54,6 +61,39 @@
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
     }
+}
+
+@layer utilities {
+  @keyframes slideInOut {
+    0% { 
+      opacity: 1;
+      transform: translateX(0);
+    }
+    40% { 
+      opacity: 1;
+      transform: translateX(0);
+    }
+    50% { 
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    51% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% { 
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide {
+    animation: slideInOut 10s infinite;
+  }
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
