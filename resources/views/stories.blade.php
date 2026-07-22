@@ -1,5 +1,4 @@
 <x-layouts::site> 
-
     {{--
     resources/views/livewire/stories.blade.php (or wherever this partial is included)
 
@@ -11,7 +10,7 @@
       assumed to live in the parent layout this view extends.
 --}}
 
-<div class="bg-neutral-100">
+<div class="bg-slate-950">
 
     {{-- ============================================================
          HERO / FEATURED STORY 
@@ -19,18 +18,20 @@
     <div class="relative h-[420px] sm:h-[480px] overflow-hidden">
    
         {{-- 2-4 images : AUTO SLIDE SHOW --}}
-        <div id="slideshow" class="relative h-full w-full">
+        <div class="relative h-full w-full overflow-hidden bg-black">
+
             <img
-                src="https://plus.unsplash.com/premium_photo-1765828956888-b9b59acae029?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3DD"
-                alt="GKR Consulting slide1"
-                class="absolute inset-0 h-full w-full object-cover animate-slide"
+                src="https://plus.unsplash.com/premium_photo-1765828956888-b9b59acae029?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Slide 1"
+                class="slide"
             >
-            <img 
-                src="https://plus.unsplash.com/premium_photo-1763898811222-c325622cfa89?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                alt="GKR Consulting slide2"
-                class="absolute inset-0 h-full w-full object-cover animate-slide"
-                style="animation-delay: 5s"
+
+            <img
+                src="https://plus.unsplash.com/premium_photo-1763898811222-c325622cfa89?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Slide 2"
+                class="slide"
             >
+
         </div>
 
 
@@ -64,7 +65,7 @@
             'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/aquaTypeLogo.png'
         ];
 
-        $marqueLogos = array_merge(...array_fill(0, 10, $logos));
+        $marqueLogos = array_merge(...array_fill(0, 20, $logos));
     @endphp
 
     <div class="bg-flame overflow-hidden py-3 flex">

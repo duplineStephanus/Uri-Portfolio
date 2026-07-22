@@ -1,0 +1,61 @@
+.img_slider 
+{
+    width: 100%;
+    height: 500px;
+}
+
+.img_slider img 
+{
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+figure
+{
+    position: relative;
+    left: 0;
+    width: 400%;
+    animation: 10s my_slide infinite;
+}
+
+.my_slide
+{
+    position: relative;
+    float: left;
+    width: 25%;  
+}
+
+/* move images to left then repeat */
+
+/* @keyframes my_slide
+{
+    0% { left: 0; }
+    20% { left: 0; }
+    25% { left: -100%; }
+    45% { left: -100%; }
+    50% { left: -200%; }
+    70% { left: -200%; }
+    75% { left: -300%; }
+    95% { left: -300%; }
+    100% { left: 0; }
+} */
+
+/* move images to left then move them to right then repeat */
+
+@keyframes my_slide
+{
+    0% { left: 0%; }
+    9% { left: 0%; }
+    18% { left: -100%; }
+    27% { left: -100%; }
+    36% { left: -200%; }
+    45% { left: -200%; }
+    54% { left: -300%; }
+    63% { left: -300%; }
+    72% { left: -200%; }
+    81% { left: -200%; }
+    90% { left: -100%; }
+    99% { left: -100%; }
+    100% { left: 0; }
+}
