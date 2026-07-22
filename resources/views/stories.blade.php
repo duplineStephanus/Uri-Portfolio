@@ -1,4 +1,31 @@
 <x-layouts::site> 
+
+@php
+    $images = [
+        [
+            'url' => 'https://plus.unsplash.com/premium_photo-1765828956888-b9b59acae029?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'alt' => 'Slide 1',
+        ],
+        [
+            'url' => 'https://plus.unsplash.com/premium_photo-1763898811222-c325622cfa89?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'alt' => 'Slide 2',
+        ],
+    ];
+@endphp
+
+ <div class="relative h-[420px] sm:h-[480px] overflow-hidden">
+    {{-- 2-4 images : AUTO SLIDE SHOW --}}
+    <div class="relative h-full w-full overflow-hidden bg-black">
+
+        @foreach($images as $image)
+        <div class="slideshow-item" style="--i: {{ $loop->iteration }};">
+            <img src="{{ $image['url'] }}" alt="{{ $image['alt'] }}">
+        </div>
+        @endforeach
+    </div>
+</div>
+
+
     {{--
     resources/views/livewire/stories.blade.php (or wherever this partial is included)
 
