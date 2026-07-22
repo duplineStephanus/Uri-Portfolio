@@ -10,6 +10,7 @@
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
 
 @import './components/slideshow.css'; 
+@import './components/marquee.css'; 
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -37,13 +38,6 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
-
-    --animate-marquee : marquee 90s linear infinite;
-
-    @keyframes marquee {
-        0% { transform: translateX(0%); }
-        100% { transform: translateX(calc(-50% - 40px)); }
-    }
 }
 
 @layer theme {

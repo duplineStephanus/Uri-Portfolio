@@ -1,31 +1,4 @@
 <x-layouts::site> 
-
-@php
-    $images = [
-        [
-            'url' => 'https://plus.unsplash.com/premium_photo-1765828956888-b9b59acae029?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            'alt' => 'Slide 1',
-        ],
-        [
-            'url' => 'https://plus.unsplash.com/premium_photo-1763898811222-c325622cfa89?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            'alt' => 'Slide 2',
-        ],
-    ];
-@endphp
-
- <div class="relative h-[420px] sm:h-[480px] overflow-hidden">
-    {{-- 2-4 images : AUTO SLIDE SHOW --}}
-    <div class="relative h-full w-full overflow-hidden bg-black">
-
-        @foreach($images as $image)
-        <div class="slideshow-item" style="--i: {{ $loop->iteration }};">
-            <img src="{{ $image['url'] }}" alt="{{ $image['alt'] }}">
-        </div>
-        @endforeach
-    </div>
-</div>
-
-
     {{--
     resources/views/livewire/stories.blade.php (or wherever this partial is included)
 
@@ -44,21 +17,30 @@
     ============================================================= --}}
     <div class="relative h-[420px] sm:h-[480px] overflow-hidden">
    
-        {{-- 2-4 images : AUTO SLIDE SHOW --}}
+        {{-- AUTO SLIDE SHOW: 2-4 images or more --}}
+        @php
+            $images = [
+                'https://images.unsplash.com/photo-1538648759472-7251f7cb2c2f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z29sZnxlbnwwfHwwfHx8Mg%3D%3D',
+                'https://images.unsplash.com/photo-1562204320-31975a5e09ce?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z29sZnxlbnwwfHwwfHx8Mg%3D%3D',
+                'https://images.unsplash.com/photo-1605144884374-ecbb643615f6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Z29sZnxlbnwwfHwwfHx8Mg%3D%3D',
+                'https://images.unsplash.com/photo-1532508583690-538a1436f423?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGdvbGZ8ZW58MHx8MHx8fDI%3D'
+                // Add as many as you want dynamically from Spatie Media Library or array...
+            ];
+
+            $slideDuration = 8; // Display duration per slide in seconds
+            $totalSlides = count($images);
+            $totalCycleDuration = $totalSlides * $slideDuration;
+        @endphp
+
         <div class="relative h-full w-full overflow-hidden bg-black">
-
-            <img
-                src="https://plus.unsplash.com/premium_photo-1765828956888-b9b59acae029?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Slide 1"
-                class="slide"
-            >
-
-            <img
-                src="https://plus.unsplash.com/premium_photo-1763898811222-c325622cfa89?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Slide 2"
-                class="slide"
-            >
-
+            @foreach ($images as $index => $imageUrl)
+                <img
+                    src="{{ $imageUrl }}"
+                    alt="Slide {{ $index + 1 }}"
+                    class="slide"
+                    style="animation-duration: {{ $totalCycleDuration }}s; animation-delay: {{ $index * $slideDuration }}s;"
+                >
+            @endforeach
         </div>
 
 
@@ -83,7 +65,7 @@
     {{-- ============================================================
         LOGO STRIP
     ============================================================= --}}
-
+    {{-- LOGO MARQUEE: 5 - 7 or more images --}}
     @php
         $logos = [
             'https://duplinestephanus.github.io/WebbApp-Files/logo/GKR-logos/blackGrayLogo.png',
@@ -96,7 +78,7 @@
     @endphp
 
     <div class="bg-flame overflow-hidden py-3 flex">
-        <div class="flex gap-20 animate-marquee">
+        <div class="flex gap-20 marquee-banner">
             @foreach ($marqueLogos as $logo)
                 <img
                     src="{{ $logo }}"
@@ -112,7 +94,7 @@
     ============================================================= --}}
     <div class="mx-auto max-w-full">
 
-        {{-- Full-width logo shot --}}
+        {{-- SPOTLIGHT IMAGE: 1 image --}}
         <div class="overflow-hidden ">
             <img
                 src="https://plus.unsplash.com/premium_photo-1763898811084-d81549378409?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1pbi1zYW1lLXNlcmllc3w0fHx8ZW58MHx8fHx8"
@@ -121,7 +103,7 @@
             >
         </div>
 
-        {{-- Two-up: mockups of logo usage --}}
+        {{-- MOCKUP IMAGE: 2 images --}}
         <div class="grid grid-cols-2">
             <div class="overflow-hidden">
                 <img
@@ -139,7 +121,7 @@
             </div>
         </div>
 
-        {{-- Full-width: Templates --}}
+        {{-- TEMPLATE IMAGE: 1 image --}}
         <div class="overflow-hidden">
             <img
                 src="https://plus.unsplash.com/premium_photo-1763898811153-0c0fba3ecdf6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -148,8 +130,8 @@
             >
         </div>
 
-        {{-- Four small imgs - product mockup or desgin elements --}}
-        <div class="grid grid-cols-4">
+        {{-- DETAIL IMAGES: 4 images --}}
+        <div class="grid grid-cols-2 lg:grid-cols-4">
             <div class="overflow-hidden">
                 <img
                     src="https://plus.unsplash.com/premium_photo-1763898810953-1608e1147726?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -185,9 +167,9 @@
         {{-- ============================================================
              BRAND DELIVERABLES CARD
         ============================================================= --}}
-        <div class="rounded-3xl bg-slate-50 px-6 py-10 text-center">
+        <div class="bg-slate-50 px-6 py-10 text-center">
             <span class="text-xs font-semibold tracking-widest text-flame uppercase">
-                What We Deliver
+                What GKR Got From This Project
             </span>
             <h2 class="mt-2 text-2xl font-bold text-slate-900">
                 Brand Deliverables

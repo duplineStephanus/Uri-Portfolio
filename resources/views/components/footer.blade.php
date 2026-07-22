@@ -11,7 +11,7 @@
             </div>
 
             {{-- Contact --}}
-            <div>
+            <div class="pl-10 md:pl-0">
                 <h3 class="text-white font-semibold">Contact Us</h3>
                 <div class="mt-4 space-y-3">
                     <a href="mailto:dupline.stephanus@uri.com"
@@ -34,7 +34,7 @@
             </div>
 
             {{-- Social --}}
-            <div>
+            <div class="pl-10 md:pl-0">
                 <h3 class="text-white font-semibold">Follow Us</h3>
                 <x-social-media />
             </div>
